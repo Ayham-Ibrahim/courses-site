@@ -55,6 +55,7 @@ class User extends Authenticatable
         );
     }
 
+    //relationship between users and courses (Many-to-Many)
     public function courses(){
         return $this->belongsToMany(Course::class);
     }

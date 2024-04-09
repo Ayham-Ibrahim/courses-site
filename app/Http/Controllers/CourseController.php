@@ -32,22 +32,22 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
-        // try {
+        try {
             $course = Course::create([
                 'name' =>$request->name,
                 'level' =>$request->level,
                 'teacher_id' =>$request->teacher_id,
                 'max_students' =>$request->max_students,
             ]);
-            
+
             return $this->customeResponse(new CourseResource($course), 'course Created Successfuly', 200);
-        // } catch (\Throwable $th) {
-        //     Log::error($th);
-        //     return $this->customeResponse(null,"Error, There somthing Rong here",500);
-        // }
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return $this->customeResponse(null,"Error, There somthing Rong here",500);
+        }
     }
 
-    /** 
+    /**
      * Display the specified resource.
      */
     public function show(Course $course)
@@ -65,17 +65,17 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        // try {
+        try {
             $course->name = $request->input('name') ?? $course->name;
             $course->level = $request->input('level') ?? $course->level;
             $course->teacher_id = $request->input('teacher_id') ?? $course->teacher_id;
             $course->max_students = $request->input('max_students') ?? $course->max_students;
             $course->save();
             return $this->customeResponse(new CourseResource($course), 'course updated Successfuly', 200);
-        // } catch (\Throwable $th) {
-        //     Log::error($th);
-        //     return $this->customeResponse(null,"Error, There somthing Rong here",500);
-        // }
+        } catch (\Throwable $th) {
+            Log::error($th);
+            return $this->customeResponse(null,"Error, There somthing Rong here",500);
+        }
     }
 
     /**

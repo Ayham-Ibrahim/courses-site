@@ -21,7 +21,6 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin1234'),
         ]);
-        // $adminRole = Role::where('name', 'admin')->first(); 
         $admin->roles()->attach(1);
     }
 }
